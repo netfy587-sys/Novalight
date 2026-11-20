@@ -1,1 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Novalight – Technology, apps and AI explained simply</title>
+<meta name="description" content="Novalight publishes original, practical guides on technology, apps, gadgets, AI and staying safe online.">
+<link rel="canonical" href="https://www.yourdomain.com/">
+<meta property="og:title" content="Novalight">
+<meta property="og:description" content="Practical guides on technology, apps, gadgets, AI and online safety.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
 
+<!-- GOOGLE ADSENSE: paste your own code here after approval.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+
+<style>
+:root{
+  --bg:#f3f7f7; --ink:#0d1c25; --muted:#53656e; --card:#ffffff; --line:#d8e2e3;
+  --deep:#08242c; --deep-ink:#effafa; --teal:#0a7f86; --nova:#ffb000; --nova-ink:#1a1200; --tint:#e3f1f1;
+  --head:'Unbounded','Trebuchet MS',Arial,sans-serif;
+  --body:'Figtree','Segoe UI',Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0a1519; --ink:#e8f4f5; --muted:#9fb6bb; --card:#10222a; --line:#1f3942;
+    --deep:#050e11; --deep-ink:#effafa; --teal:#4cc9d1; --nova:#ffb000; --nova-ink:#1a1200; --tint:#13303a;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a1519; --ink:#e8f4f5; --muted:#9fb6bb; --card:#10222a; --line:#1f3942;
+  --deep:#050e11; --deep-ink:#effafa; --teal:#4cc9d1; --nova:#ffb000; --nova-ink:#1a1200; --tint:#13303a;
+  color-scheme:dark;
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.05rem;line-height:1.7}
+a{color:var(--teal)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--nova);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--head);line-height:1.2;margin:0 0 .6em;font-weight:700}
+.wrap{max-width:1140px;margin:0 auto;padding:0 1.25rem}
+
+/* Top bar: logo left, nav right */
+.top{position:sticky;top:0;z-index:20;background:var(--deep);color:var(--deep-ink);padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:.75rem;padding-bottom:.75rem}
+.brand{display:flex;align-items:center;gap:.55rem;color:var(--deep-ink);text-decoration:none;font-family:var(--head);font-weight:700;font-size:1.25rem}
+.brand svg{width:32px;height:32px}
+.top nav ul{display:flex;flex-wrap:wrap;gap:.3rem 1.2rem;list-style:none;margin:0;padding:0;font-weight:500;font-size:.95rem}
+.top nav a{color:var(--deep-ink);text-decoration:none;opacity:.85}
+.top nav a:hover{opacity:1;color:var(--nova)}
+
+/* Hero: left-aligned, rays right */
+.hero{background:var(--deep);color:var(--deep-ink);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center;padding-top:3rem;padding-bottom:3.5rem}
+.hero h1{font-size:clamp(1.9rem,4.6vw,3.2rem);margin-bottom:.5em}
+.hero p{color:#b9d3d6;max-width:50ch;margin:0 0 1.5rem}
+.btn{display:inline-block;background:var(--nova);color:var(--nova-ink);font-weight:700;text-decoration:none;padding:.8rem 1.5rem;border-radius:8px}
+.btn:hover{filter:brightness(1.07)}
+.rays{width:100%;max-width:340px;justify-self:center}
+.rays .ray{stroke:var(--nova)} .rays .core{fill:var(--nova)} .rays .halo{fill:none;stroke:var(--teal)}
+@media (prefers-reduced-motion:no-preference){.rays .pulse{transform-origin:150px 150px;animation:pulse 4s ease-in-out infinite}}
+@keyframes pulse{50%{transform:scale(1.08);opacity:.75}}
+
+/* Main layout: left rail + content */
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:2.5rem;padding:2.2rem 0}
+.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);align-self:start}
+.rail .box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem;margin-bottom:1.3rem}
+.rail h2{font-size:.95rem;margin-bottom:.6rem}
+.rail ul{list-style:none;margin:0;padding:0}
+.rail li{padding:.4rem 0 .4rem .8rem;border-left:3px solid var(--line)}
+.rail li:hover{border-left-color:var(--nova)}
+.rail a{color:var(--ink);text-decoration:none;font-weight:500}
+
+/* Ads */
+.ad-slot{margin:1.4rem 0;text-align:center}
+.ad-slot small{display:block;font-size:.72rem;color:var(--muted);margin-bottom:.3rem}
+.ad-box{min-height:100px;border:1px dashed var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.85rem}
+
+/* Story list */
+.page-title{font-size:1.5rem;margin-bottom:1.2rem}
+.story{display:grid;grid-template-columns:150px minmax(0,1fr);gap:1.3rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.1rem;margin-bottom:1.1rem}
+.story .thumb{border-radius:10px;background:var(--tint);display:flex;align-items:center;justify-content:center;min-height:130px}
+.story .thumb svg{width:60px;height:60px}
+.story.top-story{border-color:var(--nova);border-width:2px}
+.tag{font-family:var(--head);font-weight:500;font-size:.72rem;color:var(--teal)}
+.story h3{font-size:1.12rem;margin:.2rem 0 .3rem}
+.story h3 a{color:var(--ink);text-decoration:none}
+.story h3 a:hover{color:var(--teal);text-decoration:underline}
+.meta{font-size:.86rem;color:var(--muted);margin:0 0 .4rem}
+.story p{margin:.2rem 0 .5rem;font-size:.98rem}
+.more{font-weight:700;font-size:.92rem}
+
+/* About + disclaimer */
+.about{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.6rem 1.8rem;margin-top:1.8rem}
+.about h2,.disc h2{font-size:1.25rem}
+.disc{background:var(--tint);border-left:6px solid var(--nova);border-radius:12px;padding:1.5rem 1.7rem;margin-top:1.8rem}
+.disc h3{font-size:.92rem;margin:1rem 0 .15rem}
+.disc h3:first-of-type{margin-top:0}
+.disc p{margin:.1rem 0 .5rem;font-size:.98rem}
+
+/* Footer */
+footer{background:var(--deep);color:var(--deep-ink);padding:2rem 0 2.4rem;font-size:.95rem}
+footer a{color:var(--deep-ink)}
+.foot{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+footer ul{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin:0 0 .7rem;padding:0;font-weight:500}
+.copy{color:#9fc0c4}
+
+/* Consent */
+#consent{position:fixed;left:1rem;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));max-width:620px;margin:0 auto;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:1rem 1.2rem;box-shadow:0 8px 30px rgba(0,0,0,.25);display:none;z-index:30;font-size:.95rem;line-height:1.5}
+#consent.show{display:block}
+#consent button{margin-top:.7rem;border:0;cursor:pointer;font-size:.95rem}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .rays{max-width:180px;order:-1;justify-self:start}
+  .layout{grid-template-columns:1fr}
+  .rail{position:static}
+  .rail .box:first-child ul{display:flex;flex-wrap:wrap;gap:.4rem}
+  .rail .box:first-child li{border:1px solid var(--line);border-radius:999px;padding:.25rem .8rem}
+}
+@media (max-width:560px){
+  .story{grid-template-columns:1fr}
+  .story .thumb{min-height:90px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="novalight.html" aria-label="Novalight home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="8" fill="#ffb000"/><g stroke="#ffb000" stroke-width="3" stroke-linecap="round"><path d="M20 3v6M20 31v6M3 20h6M31 20h6M8 8l4 4M28 28l4 4M32 8l-4 4M12 28l-4 4"/></g></svg>
+      Novalight
+    </a>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="novalight.html">Home</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#disclaimer">Disclaimer</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Technology, made clear.</h1>
+        <p>Novalight explains apps, gadgets, AI and online safety in plain language. Every guide is original, tested where possible and written to help you decide with confidence.</p>
+        <a class="btn" href="#articles">Read the latest guides</a>
+      </div>
+      <svg class="rays" viewBox="0 0 300 300" role="img" aria-label="A bright star radiating light">
+        <circle class="halo" cx="150" cy="150" r="110" stroke-width="2"/>
+        <circle class="halo" cx="150" cy="150" r="140" stroke-width="1" opacity=".5"/>
+        <g class="pulse">
+          <g class="ray" stroke-width="6" stroke-linecap="round"><path d="M150 20v50M150 230v50M20 150h50M230 150h50M58 58l35 35M207 207l35 35M242 58l-35 35M93 207l-35 35"/></g>
+          <circle class="core" cx="150" cy="150" r="42"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="layout">
+      <aside class="rail" aria-label="Sidebar">
+        <div class="box">
+          <h2>Topics</h2>
+          <ul>
+            <li><a href="#articles">AI and tools</a></li>
+            <li><a href="#articles">Apps</a></li>
+            <li><a href="#articles">Gadgets</a></li>
+            <li><a href="#articles">Internet tips</a></li>
+            <li><a href="#articles">Online safety</a></li>
+          </ul>
+        </div>
+        <!-- Ad slot: sidebar -->
+        <div class="ad-slot" aria-label="Advertisement">
+          <small>Advertisement</small>
+          <div class="ad-box" style="min-height:250px">Ad space</div>
+        </div>
+        <div class="box">
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms and Conditions</a></li>
+            <li><a href="#disclaimer">Disclaimer</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <div>
+        <!-- Ad slot: top of content -->
+        <div class="ad-slot" aria-label="Advertisement" style="margin-top:0">
+          <small>Advertisement</small>
+          <div class="ad-box">Ad space</div>
+        </div>
+
+        <h2 class="page-title" id="articles">Latest articles</h2>
+
+        <article class="story top-story">
+          <div class="thumb" aria-hidden="true"><svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="3" style="color:var(--teal)"><rect x="12" y="8" width="36" height="44" rx="6"/><path d="M24 44h12"/></svg></div>
+          <div>
+            <span class="tag">Gadgets · Editor’s pick</span>
+            <h3><a href="#">How to choose a budget smartphone without overpaying</a></h3>
+            <p class="meta">By the Novalight Team · 10 min read</p>
+            <p>Specs sheets can be confusing. We explain which numbers matter, such as battery size, software updates and camera sensor quality, and which are mostly marketing, so you can compare phones with confidence.</p>
+            <a class="more" href="#">Read the full guide</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="thumb" aria-hidden="true"><svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="3" style="color:var(--teal)"><circle cx="30" cy="30" r="20"/><path d="M22 30l6 6 11-12"/></svg></div>
+          <div>
+            <span class="tag">Online safety</span>
+            <h3><a href="#">Eight signs that a website or app is not safe to trust</a></h3>
+            <p class="meta">By the Novalight Team · 7 min read</p>
+            <p>Fake shops and cloned apps are on the rise. Learn the simple checks, from the web address to permission requests, that help you avoid scams before you share any details.</p>
+            <a class="more" href="#">Continue reading</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="thumb" aria-hidden="true"><svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="3" style="color:var(--teal)"><rect x="10" y="14" width="40" height="28" rx="4"/><path d="M20 50h20M30 42v8"/></svg></div>
+          <div>
+            <span class="tag">AI and tools</span>
+            <h3><a href="#">What AI chat assistants can and cannot do for you</a></h3>
+            <p class="meta">By the Novalight Team · 8 min read</p>
+            <p>AI tools are helpful for drafting, summarising and brainstorming, but they can still make mistakes. This guide shows where they save time and where you should double-check the answer.</p>
+            <a class="more" href="#">Continue reading</a>
+          </div>
+        </article>
+
+        <!-- Ad slot: in-feed -->
+        <div class="ad-slot" aria-label="Advertisement">
+          <small>Advertisement</small>
+          <div class="ad-box">Ad space</div>
+        </div>
+
+        <article class="story">
+          <div class="thumb" aria-hidden="true"><svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="3" style="color:var(--teal)"><path d="M10 38a24 24 0 0140 0M18 42a14 14 0 0124 0"/><circle cx="30" cy="48" r="3" fill="currentColor"/></svg></div>
+          <div>
+            <span class="tag">Internet tips</span>
+            <h3><a href="#">Why your Wi-Fi is slow and six fixes you can try today</a></h3>
+            <p class="meta">By the Novalight Team · 6 min read</p>
+            <p>Router placement, crowded channels and old devices are common causes. Work through our simple checklist before calling your provider.</p>
+            <a class="more" href="#">Continue reading</a>
+          </div>
+        </article>
+
+        <article class="story">
+          <div class="thumb" aria-hidden="true"><svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="3" style="color:var(--teal)"><rect x="8" y="8" width="18" height="18" rx="4"/><rect x="34" y="8" width="18" height="18" rx="4"/><rect x="8" y="34" width="18" height="18" rx="4"/><rect x="34" y="34" width="18" height="18" rx="4"/></svg></div>
+          <div>
+            <span class="tag">Apps</span>
+            <h3><a href="#">Free apps that make studying and note-taking easier</a></h3>
+            <p class="meta">By the Novalight Team · 7 min read</p>
+            <p>From simple note apps to flashcards and focus timers, here are free tools that help you stay organised, with notes on privacy and offline use.</p>
+            <a class="more" href="#">Continue reading</a>
+          </div>
+        </article>
+
+        <section class="about" id="about">
+          <h2>About Novalight</h2>
+          <p>Novalight is an independent technology blog. Our team writes every article from scratch, tests products and apps where we can and updates guides when things change. We aim to be useful, honest and easy to read.</p>
+          <p>The site is supported by advertising, which keeps our guides free for everyone. Ads never decide what we publish. Contact us at <a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a>.</p>
+        </section>
+
+        <section class="disc" id="disclaimer" role="note">
+          <h2>Disclaimer</h2>
+          <h3>General information only</h3>
+          <p>Content on Novalight is provided for general information and education. We aim to keep it accurate and current, but we cannot guarantee it is complete, error-free or right for your situation.</p>
+          <h3>Not professional advice</h3>
+          <p>Our articles are not legal, financial, security or other professional advice. Technology changes quickly, so always check official sources and use your own judgement before acting.</p>
+          <h3>Advertising and cookies</h3>
+          <p>Novalight shows ads served by Google AdSense and possibly other partners. These partners may use cookies to personalise ads based on your visits to this and other websites. Read our <a href="privacy.html">Privacy Policy</a> for details. Ads are clearly marked and are not endorsements.</p>
+          <h3>Products and external links</h3>
+          <p>We may mention products, apps or websites. We are not responsible for third-party content, services or privacy practices.</p>
+          <h3>Changes</h3>
+          <p>We may update this disclaimer at any time. By using this site you agree to our <a href="terms.html">Terms and Conditions</a>.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <ul>
+        <li><a href="novalight.html">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#disclaimer">Disclaimer</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms and Conditions</a></li>
+      </ul>
+      <div class="copy">© <span id="yr">2026</span> Novalight. All rights reserved.</div>
+    </div>
+    <div>Contact: <a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a></div>
+  </div>
+</footer>
+
+<div id="consent" role="dialog" aria-live="polite" aria-label="Cookie notice">
+  We use cookies to run this site and to show ads. By continuing, you agree to our <a href="privacy.html">Privacy Policy</a>.
+  <br><button class="btn" id="consent-ok" type="button">Got it</button>
+</div>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var box = document.getElementById('consent'), ok = false;
+  try { ok = localStorage.getItem('novalight-consent') === '1'; } catch(e) {}
+  if(!ok) box.classList.add('show');
+  document.getElementById('consent-ok').addEventListener('click', function(){
+    box.classList.remove('show');
+    try { localStorage.setItem('novalight-consent','1'); } catch(e) {}
+  });
+})();
+</script>
+</body>
+</html>
